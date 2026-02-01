@@ -16,47 +16,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; background-color: var(--cream); color: var(--mocha); scroll-behavior: smooth; overflow-x: hidden; }
         
-        /* MINI MENU BAR - STATIC AT TOP */
-        .mini-nav {
-            position: absolute; 
-            top: 20px;
-            right: 20px;
-            z-index: 3000;
-            display: flex;
-            gap: 10px;
-        }
-
-        .mini-nav a {
-            text-decoration: none;
-            color: var(--mocha); 
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            background: transparent;
-        }
-
-        .mini-nav a:hover {
-            background: var(--beige);
-            color: var(--mocha);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        @media (max-width: 768px) {
-            .mini-nav { 
-                right: 50%; 
-                transform: translateX(50%); 
-                width: 100%; 
-                justify-content: center; 
-                top: 15px;
-                flex-wrap: wrap;
-                gap: 5px;
-            }
-        }
-
+        /* SHINY TEXT ANIMATION */
         .shiny-name {
             display: inline-block;
             background: linear-gradient(120deg, var(--mocha) 0%, var(--mocha) 35%, #ffffff 50%, var(--mocha) 65%, var(--mocha) 100%);
@@ -73,12 +33,14 @@
             100% { background-position: -50% center; }
         }
 
+        /* BEIGE PULSE & FLOAT ANIMATION */
         @keyframes beigeBreath {
             0% { box-shadow: 0 5px 15px rgba(212, 195, 163, 0.3); transform: translateY(0); border-color: var(--tan); }
             50% { box-shadow: 0 15px 30px rgba(212, 195, 163, 0.8); transform: translateY(-5px); border-color: var(--mocha); }
             100% { box-shadow: 0 5px 15px rgba(212, 195, 163, 0.3); transform: translateY(0); border-color: var(--tan); }
         }
 
+        /* MUSIC GATE OVERLAY */
         #music-gate {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--cream); z-index: 5000; display: flex;
@@ -91,6 +53,7 @@
             cursor: pointer; margin-top: 20px; text-transform: uppercase;
         }
 
+        /* FLOATING MUSIC CONTROL */
         #music-control {
             position: fixed; bottom: 20px; right: 20px; z-index: 1000;
             background: rgba(255,255,255,0.9); padding: 10px; border-radius: 50px;
@@ -98,14 +61,24 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://i.imgur.com/3deZEDh.jpeg') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; position: relative; }
+        /* Navigation */
+        .nav-header { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; padding: 15px 20px; z-index: 1000; background: rgba(253, 251, 247, 0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .menu-btn { font-size: 1.5rem; cursor: pointer; color: var(--mocha); border: none; background: none; }
+        .side-menu { position: fixed; top: 0; right: -100%; width: 80%; height: 100%; background: var(--cream); transition: 0.4s; z-index: 2000; padding: 60px 30px; display: flex; flex-direction: column; box-shadow: -10px 0 20px rgba(0,0,0,0.1); }
+        .side-menu.active { right: 0; }
+        .side-menu a { text-decoration: none; color: var(--mocha); font-size: 0.9rem; margin: 12px 0; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid transparent; }
+
+        /* Hero */
+        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://i.imgur.com/3deZEDh.jpeg') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
         .hero h1 { font-family: 'Great Vibes', cursive; font-size: 3.8rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.4); }
         
+        /* Countdown & Calendar */
         .timer-box { background: var(--beige); padding: 20px; border-radius: 12px; margin: 20px auto; max-width: 400px; font-weight: 600; text-align: center; border: 1px solid var(--tan); animation: beigeBreath 4s ease-in-out infinite; }
         .calendar-box { text-align: center; margin: 20px auto; padding: 20px; background: #FAFAFA; display: inline-block; border: 1px solid var(--tan); border-radius: 8px; animation: beigeBreath 4s ease-in-out infinite; animation-delay: 1s; }
         .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; font-size: 0.8rem; margin-top: 10px; }
         .highlight { border: 2px dashed #d44d5c; border-radius: 50%; padding: 2px; color: #d44d5c; font-weight: bold; }
 
+        /* Entourage */
         .entourage-section { padding: 60px 10px; text-align: center; }
         .entourage-row { display: flex; justify-content: center; margin-bottom: 25px; }
         .left-col { flex: 1; text-align: right; border-right: 1px solid var(--tan); padding-right: 15px; }
@@ -114,8 +87,10 @@
         .role-header { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; display: block; margin-bottom: 5px; color: var(--mocha); }
         .name-text { font-size: 0.85rem; line-height: 1.5; display: block; margin-bottom: 2px; }
 
+        /* SplitText Animation Class */
         .split-animate span { display: inline-block; }
 
+        /* 3D Gallery CSS */
         .gallery-container { height: 450px; width: 100%; display: flex; align-items: center; justify-content: center; position: relative; transform-style: preserve-3d; perspective: 1200px; overflow: hidden; }
         .gallery-ring { position: relative; width: 180px; height: 240px; transform-style: preserve-3d; transition: transform 0.5s ease-out; animation: ringRotate 25s linear infinite; }
         .gallery-ring:hover { animation-play-state: paused; }
@@ -128,6 +103,7 @@
         .gallery-item-3d:nth-child(6) { transform: rotateY(300deg) translateZ(280px); }
         @keyframes ringRotate { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
 
+        /* LOGO LOOP ANIMATION */
         .logoloop-container { width: 100%; overflow: hidden; padding: 20px 0; position: relative; }
         .logoloop-track { display: flex; width: max-content; animation: marquee 20s linear infinite; }
         .logoloop-track:hover { animation-play-state: paused; }
@@ -135,6 +111,7 @@
         .color-dot { width: 30px; height: 30px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
+        /* RSVP */
         .rsvp-form { background: white; padding: 30px 20px; border-radius: 15px; max-width: 450px; margin: 20px auto; border: 1px solid var(--tan); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
         input, select, textarea { width: 100%; padding: 15px; margin-bottom: 12px; border: 1px solid var(--tan); border-radius: 8px; font-family: 'Montserrat', sans-serif; }
         .submit-btn { width: 100%; padding: 15px; background: var(--mocha); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; letter-spacing: 2px; transition: 0.3s; }
@@ -161,21 +138,27 @@
     </div>
 
     <div id="main-content" style="display:none;">
-        
+        <header class="nav-header">
+            <div style="font-family: 'Cormorant Garamond'; font-weight: bold; letter-spacing: 1px;">M & D | 12.26.25</div>
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        </header>
+
+        <div class="side-menu" id="sideMenu">
+            <button class="menu-btn" style="align-self: flex-end;" onclick="toggleMenu()">✕</button>
+            <a href="#home" onclick="toggleMenu()">Home</a>
+            <a href="#schedule" onclick="toggleMenu()">Schedule</a>
+            <a href="#entourage" onclick="toggleMenu()">Entourage</a>
+            <a href="#dresscode" onclick="toggleMenu()">Dress Code</a>
+            <a href="#rsvp" onclick="toggleMenu()">RSVP</a>
+            <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+        </div>
+
         <section class="hero" id="home">
-            <nav class="mini-nav">
-                <a href="#home">Home</a>
-                <a href="#schedule">Schedule</a>
-                <a href="#entourage">Entourage</a>
-                <a href="#dresscode">Dress Code</a>
-                <a href="#rsvp">RSVP</a>
-                <a href="#gallery">Gallery</a>
-            </nav>
             <h1 class="split-animate">Michael & Dreena</h1>
             <p class="split-animate" style="letter-spacing: 5px; margin-top: 10px; font-size: 0.8rem;">WE ARE GETTING MARRIED</p>
         </section>
 
-        <section id="schedule" style="padding: 60px 20px; text-align: center;">
+        <section style="padding: 60px 20px; text-align: center;">
             <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; margin-bottom: 5px; letter-spacing: 1px;">Days until we say I do</p>
             <div class="timer-box" id="timer">00d : 00h : 00m : 00s</div>
             <div class="calendar-box" data-aos>
@@ -396,6 +379,8 @@
             if (audio.paused) { audio.play(); icon.innerText = "🔊"; } 
             else { audio.pause(); icon.innerText = "🔈"; }
         }
+
+        function toggleMenu() { document.getElementById('sideMenu').classList.toggle('active'); }
         
         const weddingDate = new Date("Dec 26, 2025 10:00:00").getTime();
         setInterval(function() {
