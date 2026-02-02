@@ -87,17 +87,19 @@
         /* Entourage */
         .entourage-section { padding: 60px 10px; text-align: center; width: 100%; max-width: 100vw; }
         .entourage-row { display: flex; justify-content: center; margin-bottom: 25px; width: 100%; }
-        .left-col { flex: 1; text-align: right; border-right: 1px solid var(--tan); padding-right: 15px; }
-        .right-col { flex: 1; text-align: left; padding-left: 15px; }
+        .left-col { flex: 1; text-align: right; border-right: 1px solid var(--tan); padding-right: 10px; }
+        .right-col { flex: 1; text-align: left; padding-left: 10px; }
         .centered-label { display: block; text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: bold; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid var(--tan); width: fit-content; margin-left: auto; margin-right: auto; padding-bottom: 5px; }
         .role-header { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; display: block; margin-bottom: 5px; color: var(--mocha); }
-        .name-text { font-size: 0.85rem; line-height: 1.5; display: block; margin-bottom: 2px; word-wrap: break-word; overflow-wrap: break-word; }
+        
+        /* Adjusted font for long names to prevent overflow in Chrome */
+        .name-text { font-size: 0.8rem; line-height: 1.6; display: block; margin-bottom: 2px; white-space: nowrap; letter-spacing: -0.2px; }
 
-        /* Gallery */
+        /* Gallery - Optimized to fix lag */
         .gallery-container { height: 450px; width: 100%; display: flex; align-items: center; justify-content: center; position: relative; transform-style: preserve-3d; perspective: 1200px; overflow: hidden; }
-        .gallery-ring { position: relative; width: 180px; height: 240px; transform-style: preserve-3d; transition: transform 0.5s ease-out; animation: ringRotate 25s linear infinite; }
+        .gallery-ring { position: relative; width: 180px; height: 240px; transform-style: preserve-3d; transition: transform 0.1s linear; animation: ringRotate 25s linear infinite; will-change: transform; }
         .gallery-ring:hover { animation-play-state: paused; }
-        .gallery-item-3d { position: absolute; width: 180px; height: 240px; object-fit: cover; border-radius: 10px; border: 3px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.2); -webkit-box-reflect: below 8px linear-gradient(transparent, rgba(0,0,0,0.1)); }
+        .gallery-item-3d { position: absolute; width: 180px; height: 240px; object-fit: cover; border-radius: 10px; border: 3px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.2); -webkit-box-reflect: below 8px linear-gradient(transparent, rgba(0,0,0,0.1)); backface-visibility: hidden; }
         .gallery-item-3d:nth-child(1) { transform: rotateY(0deg) translateZ(280px); }
         .gallery-item-3d:nth-child(2) { transform: rotateY(60deg) translateZ(280px); }
         .gallery-item-3d:nth-child(3) { transform: rotateY(120deg) translateZ(280px); }
@@ -131,6 +133,9 @@
             .gallery-item-3d:nth-child(4) { transform: rotateY(180deg) translateZ(200px); }
             .gallery-item-3d:nth-child(5) { transform: rotateY(240deg) translateZ(200px); }
             .gallery-item-3d:nth-child(6) { transform: rotateY(300deg) translateZ(200px); }
+            .left-col { padding-right: 5px; }
+            .right-col { padding-left: 5px; }
+            .name-text { font-size: 0.72rem; }
         }
     </style>
 </head>
@@ -257,7 +262,9 @@
                     <br>
                     <span class="role-header">Candle</span>
                     <span class="name-text shiny-name">Niro Zuriel Fabian</span>
-                    <span class="name-text shiny-name">Mylene Sarmiento</span>
+                    <br>
+                    <span class="role-header">Cord</span>
+                    <span class="name-text shiny-name">Henzon Peñaflor</span>
                 </div>
                 <div class="right-col">
                     <span class="role-header">Maid of Honor</span>
@@ -267,8 +274,10 @@
                     <span class="name-text shiny-name">Micah Kate Barbieto</span>
                     <span class="name-text shiny-name">Preia Mariel Ragojo</span>
                     <br>
+                    <span class="role-header">Candle</span>
+                    <span class="name-text shiny-name">Mylene Sarmiento</span>
+                    <br>
                     <span class="role-header">Cord</span>
-                    <span class="name-text shiny-name">Henzon Peñaflor</span>
                     <span class="name-text shiny-name">Irish Mae Fabian</span>
                 </div>
             </div>
@@ -278,8 +287,10 @@
                 <span class="name-text shiny-name">Marlou Rod Linsangan & Reylyn Grace Fabian</span>
             </div>
 
-            <span class="centered-label">Bearers</span>
+            <div style="margin: 30px 0; color: var(--tan);">❀</div>
+
             <div data-aos style="margin-bottom: 25px;">
+                <span class="centered-label">Bearers</span>
                 <span class="role-header">Bible Bearer</span>
                 <span class="name-text shiny-name">Nael Zachary Fabian</span>
                 <br>
@@ -288,6 +299,21 @@
                 <br>
                 <span class="role-header">Coin Bearer</span>
                 <span class="name-text shiny-name">Jacelord Brylle Obciana</span>
+            </div>
+
+            <div class="entourage-row" data-aos style="margin-top: 25px;">
+                <div class="left-col">
+                    <span class="centered-label">Flower Boys</span>
+                    <span class="name-text shiny-name">Vince Tyrone Viesca</span>
+                    <span class="name-text shiny-name">Jlord Yeohan Obciana</span>
+                    <span class="name-text shiny-name">Yeshua Inigo San Agustin</span>
+                </div>
+                <div class="right-col">
+                    <span class="centered-label">Flower Girls</span>
+                    <span class="name-text shiny-name">Reanne P. Calica</span>
+                    <span class="name-text shiny-name">Zia Narelle Fabian</span>
+                    <span class="name-text shiny-name">Zereneah Chikino</span>
+                </div>
             </div>
         </section>
 
@@ -331,12 +357,12 @@
             <h2 style="font-family: 'Great Vibes', cursive; font-size: 3rem; text-align: center; margin-bottom: 40px;">Our Moments</h2>
             <div class="gallery-container">
                 <div class="gallery-ring" id="galleryRing">
-                    <img src="https://i.imgur.com/3deZEDh.jpeg" class="gallery-item-3d">
-                    <img src="https://i.imgur.com/BzS7Ai0.jpeg" class="gallery-item-3d">
-                    <img src="https://i.imgur.com/ywlRPSE.jpeg" class="gallery-item-3d">
-                    <img src="https://i.imgur.com/2tbdVdF.jpeg" class="gallery-item-3d">
-                    <img src="https://i.imgur.com/8gKnI47.jpeg" class="gallery-item-3d">
-                    <img src="https://i.imgur.com/bfwoiiX.jpeg" class="gallery-item-3d">
+                    <img src="https://i.imgur.com/3deZEDh.jpeg" class="gallery-item-3d" loading="lazy">
+                    <img src="https://i.imgur.com/BzS7Ai0.jpeg" class="gallery-item-3d" loading="lazy">
+                    <img src="https://i.imgur.com/ywlRPSE.jpeg" class="gallery-item-3d" loading="lazy">
+                    <img src="https://i.imgur.com/2tbdVdF.jpeg" class="gallery-item-3d" loading="lazy">
+                    <img src="https://i.imgur.com/8gKnI47.jpeg" class="gallery-item-3d" loading="lazy">
+                    <img src="https://i.imgur.com/bfwoiiX.jpeg" class="gallery-item-3d" loading="lazy">
                 </div>
             </div>
         </section>
@@ -378,7 +404,7 @@
                     span.style.opacity = '0';
                     span.style.transform = 'translateY(40px)';
                     span.style.display = 'inline-block';
-                    if (char === ' ') span.innerHTML = '&nbsp;'; 
+                    if (char === ' ') span.innerHTML = ' '; 
                     el.appendChild(span);
                     return span;
                 });
@@ -432,10 +458,10 @@
                 scrollRotation += e.deltaY * 0.1;
                 ring.style.transform = `rotateY(${scrollRotation}deg)`;
             }
-        });
+        }, {passive: true});
 
         let touchX = 0;
-        window.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; });
+        window.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, {passive: true});
         window.addEventListener('touchmove', (e) => {
             const ring = document.getElementById('galleryRing');
             if(ring && main.style.display !== 'none') {
@@ -444,7 +470,8 @@
                 ring.style.transform = `rotateY(${scrollRotation}deg)`;
                 touchX = e.touches[0].clientX;
             }
-        });
+        }, {passive: true});
     </script>
 </body>
 </html>
+
